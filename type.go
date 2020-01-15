@@ -10,13 +10,13 @@ import (
 
 type Nmon struct {
 	seriesClass []string
-	seriesMap   map[string]seriesLine
+	seriesMap   map[string]SeriesLine
 }
 
 func newNmon() Nmon {
 	return Nmon{
 		seriesClass: make([]string, 0, 32),
-		seriesMap:   make(map[string]seriesLine),
+		seriesMap:   make(map[string]SeriesLine),
 	}
 }
 
@@ -87,50 +87,50 @@ func (n *Nmon) sortSeriesClass() {
 	// )
 }
 
-// seriesLine 单并发使用，不考虑并发安全
-type seriesLine struct {
+// SeriesLine 单并发使用，不考虑并发安全
+type SeriesLine struct {
 	// mu sync.Mutex
 	q *queue.Queue
 }
 
-func newDataLine() seriesLine {
-	return seriesLine{q: queue.New()}
+func newDataLine() SeriesLine {
+	return SeriesLine{q: queue.New()}
 }
 
-func (sl *seriesLine) push(v interface{}) {
+func (sl *SeriesLine) push(v interface{}) {
 	// sl.mu.Lock()
 	// defer sl.mu.Unlock()
 	sl.q.Add(v)
 }
 
-// func (sl *seriesLine) take() interface{} {
+// func (sl *SeriesLine) take() interface{} {
 // 	// sl.mu.Lock()
 // 	// defer sl.mu.Unlock()
 // 	return sl.q.Remove()
 // }
 
-func (sl *seriesLine) Get(i int) interface{} {
+func (sl *SeriesLine) Get(i int) interface{} {
 	// sl.mu.Lock()
 	// defer sl.mu.Unlock()
 	return sl.q.Get(i)
 }
 
-func (sl seriesLine) Len() int {
+func (sl SeriesLine) Len() int {
 	return sl.q.Length()
 }
 
 // 暂未发现排序不正确的情况
-// func (sl seriesLine) Len() int {
+// func (sl SeriesLine) Len() int {
 // 	return sl.q.Length()
 // }
 //
-// func (sl seriesLine) Less(i, j int) bool {
+// func (sl SeriesLine) Less(i, j int) bool {
 // 	split1 := bytes.Split(sl.Get(i).([]byte), []byte(","))
 // 	split2 := bytes.Split(sl.Get(j).([]byte), []byte(","))
 // 	return bytes.Compare(split1[0], split2[0]) < 0
 // 	return bytes.Compare(split1[1], split2[1]) < 0
 // }
 //
-// func (sl seriesLine) Swap(i, j int) {
+// func (sl SeriesLine) Swap(i, j int) {
 // 	panic("implement me")
 // }

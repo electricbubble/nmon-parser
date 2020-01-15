@@ -14,7 +14,7 @@ import (
 
 func TestTmpMain(t *testing.T) {
 	allSheetSlice := make([]string, 0, 32)
-	allSheetMap := make(map[string]seriesLine)
+	allSheetMap := make(map[string]SeriesLine)
 
 	name := "/Users/hero/Documents/temp/2020-01/to_guigui/LINUX_single_2563_144_50_10u10m.nmon"
 	// name = "/Users/hero/Documents/temp/2020-01/to_guigui/AIX_single_2563_19_50_10u10m.nmon"
