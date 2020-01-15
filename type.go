@@ -35,6 +35,13 @@ func (n *Nmon) GetSeriesClass() []string {
 	return n.seriesClass
 }
 
+func (n *Nmon) GetSeriesLine(cls string) SeriesLine {
+	if sl, ok := n.seriesMap[cls]; ok {
+		return sl
+	}
+	return SeriesLine{}
+}
+
 func (n *Nmon) showSeriesData(cls string) {
 	if sl, ok := n.seriesMap[cls]; ok {
 		count := sl.Len()
