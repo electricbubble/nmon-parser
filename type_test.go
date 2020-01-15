@@ -18,10 +18,10 @@ func TestDataLine(t *testing.T) {
 	}
 	// time.Sleep(time.Millisecond * 500)
 	// wg.Wait()
-	t.Log("length:", dl.length())
+	t.Log("Len:", dl.Len())
 
-	for i, count := 0, dl.length(); i < count; i++ {
-		t.Log("get:", dl.get(i))
+	for i, count := 0, dl.Len(); i < count; i++ {
+		t.Log("Get:", dl.Get(i))
 		// t.Log("take:", dl.take())
 		// go func(no int) {
 		// 	t.Log("gNo:", no, "take:", dl.take())

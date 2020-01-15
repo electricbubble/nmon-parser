@@ -37,9 +37,9 @@ func (n *Nmon) GetSeriesClass() []string {
 
 func (n *Nmon) showSeriesData(cls string) {
 	if sl, ok := n.seriesMap[cls]; ok {
-		count := sl.length()
+		count := sl.Len()
 		for i := 0; i < count; i++ {
-			fmt.Println(sl.get(i))
+			fmt.Println(sl.Get(i))
 		}
 	}
 }
@@ -109,13 +109,13 @@ func (sl *seriesLine) push(v interface{}) {
 // 	return sl.q.Remove()
 // }
 
-func (sl *seriesLine) get(i int) interface{} {
+func (sl *seriesLine) Get(i int) interface{} {
 	// sl.mu.Lock()
 	// defer sl.mu.Unlock()
 	return sl.q.Get(i)
 }
 
-func (sl *seriesLine) length() int {
+func (sl seriesLine) Len() int {
 	return sl.q.Length()
 }
 
@@ -125,8 +125,8 @@ func (sl *seriesLine) length() int {
 // }
 //
 // func (sl seriesLine) Less(i, j int) bool {
-// 	split1 := bytes.Split(sl.get(i).([]byte), []byte(","))
-// 	split2 := bytes.Split(sl.get(j).([]byte), []byte(","))
+// 	split1 := bytes.Split(sl.Get(i).([]byte), []byte(","))
+// 	split2 := bytes.Split(sl.Get(j).([]byte), []byte(","))
 // 	return bytes.Compare(split1[0], split2[0]) < 0
 // 	return bytes.Compare(split1[1], split2[1]) < 0
 // }

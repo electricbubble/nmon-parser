@@ -79,8 +79,8 @@ func TestTmpMain(t *testing.T) {
 
 	for _, k := range allSheetSlice {
 		dl := allSheetMap[k]
-		fmt.Println(k, dl.length())
-		// fmt.Println(k, dl.length(), sort.IsSorted(dl))
+		fmt.Println(k, dl.Len())
+		// fmt.Println(k, dl.Len(), sort.IsSorted(dl))
 	}
 
 	if _, ok := allSheetMap["ZZZZ"]; !ok {
@@ -91,11 +91,11 @@ func TestTmpMain(t *testing.T) {
 	// zzzz := allSheetMap["ZZZZ"]
 
 	if dl, ok := allSheetMap["CPU_ALL"]; ok {
-		for i, count := 0, dl.length(); i < count; i++ {
-			bsLine := dl.get(i).([]byte)
+		for i, count := 0, dl.Len(); i < count; i++ {
+			bsLine := dl.Get(i).([]byte)
 			// if i > 0 {
 			// 	split := bytes.Split(bsLine, []byte(","))
-			// 	bsZ := zzzz.get(i - 1).([]byte)
+			// 	bsZ := zzzz.Get(i - 1).([]byte)
 			// 	fmt.Println(string(split[1]), string(bsZ))
 			// 	fmt.Println(string(bsLine))
 			// 	break
