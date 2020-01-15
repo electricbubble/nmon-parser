@@ -2,7 +2,6 @@ package nmonparser
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -33,9 +32,9 @@ func ParseNmon(name string) (nmon Nmon, err error) {
 		return Nmon{}, err
 	}
 
-	fmt.Println(nmon.seriesClass)
+	// fmt.Println(nmon.seriesClass)
 	nmon.sortSeriesClass()
-	fmt.Println(nmon.seriesClass)
+	// fmt.Println(nmon.seriesClass)
 
 	return nmon, nil
 }
