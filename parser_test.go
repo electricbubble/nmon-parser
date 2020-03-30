@@ -115,6 +115,14 @@ func TestParseNmon(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	nmon.showSeriesData("ZZZZ")
+	// nmon.showSeriesData("ZZZZ")
+	// nmon.showSeriesData("CPU_ALL")
+	// fmt.Println(nmon.GetSeriesClass())
+	sl := nmon.GetSeriesLine("CPU_ALL")
+	count := sl.Len()
+	for i := 0; i < count; i++ {
+		fmt.Println(sl.Get(i))
+	}
+	fmt.Println(sl.Len())
 	// fmt.Println(http.ParseTime("08:47:01 08-JAN-2020"))
 }
