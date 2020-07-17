@@ -15,8 +15,9 @@ import (
 func TestTmpMain(t *testing.T) {
 	allSheetSlice := make([]string, 0, 32)
 	allSheetMap := make(map[string]SeriesLine)
-
-	name := "/Users/hero/Documents/temp/2020-01/to_guigui/LINUX_single_2563_144_50_10u10m.nmon"
+        
+	name := "/home/ec2-user/test/goproj/nmon_files/ip-172-31-10-38_200717_0733.nmon"
+	//name := "/Users/hero/Documents/temp/2020-01/to_guigui/LINUX_single_2563_144_50_10u10m.nmon"
 	// name = "/Users/hero/Documents/temp/2020-01/to_guigui/AIX_single_2563_19_50_10u10m.nmon"
 	// name = "/Users/hero/Documents/Pactera/CEC-Performance-Testing/2019-12/GoldenDB_2019-12-27/transaction3_1000w/Mixed_Node1/201912261503_Mixed_ip71_10.10.22.87.nmon"
 
@@ -106,7 +107,8 @@ func TestTmpMain(t *testing.T) {
 }
 
 func TestParseNmon(t *testing.T) {
-	name := "/Users/hero/Documents/temp/2020-01/to_guigui/LINUX_single_2563_144_50_10u10m.nmon"
+	name := "/home/ec2-user/test/goproj/nmon_files/ip-172-31-10-38_200717_0733.nmon"
+	//name := "/Users/hero/Documents/temp/2020-01/to_guigui/LINUX_single_2563_144_50_10u10m.nmon"
 	// name = "/Users/hero/Documents/temp/2020-01/to_guigui/AIX_single_2563_19_50_10u10m.nmon"
 	// name = "/Users/hero/Documents/Pactera/CEC-Performance-Testing/2019-12/GoldenDB_2019-12-27/transaction3_1000w/Mixed_Node1/201912261503_Mixed_ip71_10.10.22.87.nmon"
 
